@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+  {% if user.is_authenticated %}
+      <h1>CRM Django</h1>    
+      <h1>Bem-vindo, {{ user.username }}!</h1>
+      <table class="table table-striped table-hover table-bordered">
+      <thead class="table-dark">
+      <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Data de criação</th>
+      <th scope="col">Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if registros %}
+
+    {% for registro in registros %}
+    <tr>
+      <td>{{ registro.primeiro_nome }} {{ registro.sobrenome }}</td>
+      <td>{{ registro.email }}</td>
+      <td>{{ registro.telefone }}</td>
+      <td>{{ registro.cidade }}</td>
+      <td>{{ registro.estado }}</td>
+      <td>{{ registro.data_criacao }}</td>
+      <td>{{ registro.id }}</td>
+    </tr>
+  </tbody>
+  
+  {% endfor %}
+  
+  {% endif %}
+
+
+
+      {% else %}
+      <h1>Login</h1>
+        <br/>
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <form>
+  <div class="mb-3">
+    <label for="exampleInputText1" class="form-label">Nome de Usuário</label>
+    <input type="text" class="form-control" name="username" placeholder="Username" required>
+  </div>
+  <br/>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Senha</label>
+    <input type="password" class="form-control" name="password" placeholder="Senha" required>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input">
+   </div>
+   <br/>
+  <button type="submit" class="btn btn-secondary">Login</button>
+</form>
+        </form>
+    </div>
+</body>
+{% endif %}
+{% endblock %}
+</html>
