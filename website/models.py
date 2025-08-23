@@ -8,6 +8,7 @@ class Registro(models.Model):
     cidade = models.CharField(max_length=100)
     estado = models.CharField(max_length=100)
     telefone = models.CharField(max_length=15)
+    estagio = models.TextField(max_length=120)
 
 
     def __str__(self):

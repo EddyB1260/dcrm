@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-6 offset-md-3">
+    <h1>Registrar Cliente</h1>
+    <br/>
+
+    <form method="POST" action="{% url 'atualizar_registro' registro.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Atualizar registro</button>
+    </form>
+
+
+
+    </div>
+{% endblock %}

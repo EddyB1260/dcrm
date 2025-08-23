@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+{{ registro.primeiro_nome }} {{ registro.sobrenome }}
+  </div>
+  <div class="card-body">
+    <section class="card-title">  <p><strong>Nome:</strong> {{ registro.primeiro_nome }} {{ registro.sobrenome }}</p>
+  <p><strong>Email:</strong> {{ registro.email }}</p>
+  <p><strong>Telefone:</strong> {{ registro.telefone }}</p>
+  <p><strong>Cidade:</strong> {{ registro.cidade }}</p>
+  <p><strong>Estado:</strong> {{ registro.estado }}</p>
+  <p><strong>Data de Criação:</strong> {{ registro.data_criacao }}</p>
+  <p><strong>ID:</strong> {{ registro.id }}</p></section>
+    <p class="card-text">{{ registro.estagio }}</p>
+    
+   <a href="{% url 'home' %}" class="btn btn-secondary">Voltar</a>
+   <a href="{% url 'deletar_registro' registro.id %}" class="btn btn-danger">Excluir</a>
+   <a href="{% url 'atualizar_registro' registro.id %}" class="btn btn-primary">Atualizar Registro</a>
+</div>
+
+{% endblock %}
